@@ -96,4 +96,19 @@ while (newTextToSlice.length > 0) {
   sequences.push(sequence);
   newTextToSlice = newTextToSlice.slice(i + 25, newTextToSlice.length);
 }
-console.log(sequences);
+// console.log(sequences);
+
+// Étape B.2 : découper le tableau en sous-tableaux de 5 x 5 éléments
+const subGroups = [];
+for (let i = 0; i < sequences.length; i++) {
+  let sequenceToSlice = sequences[i];
+  let subSequence = [];
+  while (sequenceToSlice.length > 0) {
+    let j = 0;
+    let subElement = sequenceToSlice.slice(j, j + 5);
+    subSequence.push(subElement);
+    sequenceToSlice = sequenceToSlice.slice(j + 5, sequenceToSlice.length);
+  }
+  subGroups.push(subSequence);
+}
+console.log(subGroups);
