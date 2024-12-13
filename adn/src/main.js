@@ -114,7 +114,7 @@ for (let i = 0; i < sequences.length; i++) {
 // console.log(subGroups);
 
 // Étape B.3 : trouver les récurrences
-function getReccurences(arr) {
+function getRecurrences(arr) {
   let recurrences = [];
   let a = [];
   let c = [];
@@ -140,10 +140,10 @@ function getReccurences(arr) {
     c.push(cCount);
     g.push(gCount);
     t.push(tCount);
-    recurrences.push([a, c, g, t]);
+    recurrences.push({ a, c, g, t });
   }
   return recurrences;
 }
 
-const sequenceReccurences = getReccurences(subGroups[0]);
-console.log(sequenceReccurences);
+const sequenceRecurrences = getRecurrences(subGroups[0]);
+console.log(sequenceRecurrences);
