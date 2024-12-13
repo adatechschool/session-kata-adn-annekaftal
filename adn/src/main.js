@@ -2,17 +2,18 @@ import { readFileSync } from "fs";
 let text = readFileSync("adn/adn.txt").toString().split("\n")[0];
 // console.log(text);
 
-// Étape 1 : découper le fichier en codons tant qu'il reste au moins 3 nucléotides
+// Étape A.1 : découper le fichier en codons tant qu'il reste au moins 3 nucléotides
 const codons = [];
-while (text.length >= 3) {
+let textToSlice = text;
+while (textToSlice.length >= 3) {
   let i = 0;
-  let codon = text[i] + text[i + 1] + text[i + 2];
+  let codon = textToSlice.slice(i, i + 3);
   codons.push(codon);
-  text = text.slice(i + 3, text.length);
+  textToSlice = textToSlice.slice(i + 3, textToSlice.length);
 }
 // console.log(codons);
 
-// Étape 2 : convertir les nucléotides en protéines grâce à une table de conversion
+// Étape A.2 : convertir les nucléotides en protéines grâce à une table de conversion
 const conversionTable = {
   ATA: "I",
   ATC: "I",
@@ -84,4 +85,15 @@ let proteines = "";
 for (let i = 0; i < codons.length; i++) {
   proteines += conversionTable[codons[i]];
 }
-console.log(proteines);
+// console.log(proteines);
+
+// Étape B.1 : découper le fichier en tableau de 25 éléments
+const sequences = [];
+let newTextToSlice = text;
+while (newTextToSlice.length > 0) {
+  let i = 0;
+  let sequence = newTextToSlice.slice(i, i + 25);
+  sequences.push(sequence);
+  newTextToSlice = newTextToSlice.slice(i + 25, newTextToSlice.length);
+}
+console.log(sequences);
