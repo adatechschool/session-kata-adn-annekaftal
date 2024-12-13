@@ -115,7 +115,6 @@ for (let i = 0; i < sequences.length; i++) {
 
 // Étape B.3 : trouver les récurrences
 function getRecurrences(arr) {
-  let recurrences = [];
   let a = [];
   let c = [];
   let g = [];
@@ -140,8 +139,8 @@ function getRecurrences(arr) {
     c.push(cCount);
     g.push(gCount);
     t.push(tCount);
-    recurrences.push({ a, c, g, t });
   }
+  const recurrences = { a, c, g, t };
   return recurrences;
 }
 
