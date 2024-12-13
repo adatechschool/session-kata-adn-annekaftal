@@ -111,4 +111,39 @@ for (let i = 0; i < sequences.length; i++) {
   }
   subGroups.push(subSequence);
 }
-console.log(subGroups);
+// console.log(subGroups);
+
+// Étape B.3 : trouver les récurrences
+function getReccurences(arr) {
+  let recurrences = [];
+  let a = [];
+  let c = [];
+  let g = [];
+  let t = [];
+  for (let i = 0; i < 5; i++) {
+    let aCount = 0;
+    let cCount = 0;
+    let gCount = 0;
+    let tCount = 0;
+    for (let j = 0; j < 5; j++) {
+      if (arr[j][i] === "A") {
+        aCount += 1;
+      } else if (arr[j][i] === "C") {
+        cCount += 1;
+      } else if (arr[j][i] === "G") {
+        gCount += 1;
+      } else if (arr[j][i] === "T") {
+        tCount += 1;
+      }
+    }
+    a.push(aCount);
+    c.push(cCount);
+    g.push(gCount);
+    t.push(tCount);
+    recurrences.push([a, c, g, t]);
+  }
+  return recurrences;
+}
+
+const sequenceReccurences = getReccurences(subGroups[0]);
+console.log(sequenceReccurences);
